@@ -1,4 +1,4 @@
-package org.bdados.sapi.empenhos;
+package org.bdados.sapi.empenho;
 
 import org.springframework.stereotype.Service;
 

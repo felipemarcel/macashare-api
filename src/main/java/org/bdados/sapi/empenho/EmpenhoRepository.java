@@ -1,4 +1,4 @@
-package org.bdados.sapi.empenhos;
+package org.bdados.sapi.empenho;
 
 import org.springframework.data.solr.repository.SolrCrudRepository;
 import org.springframework.stereotype.Repository;

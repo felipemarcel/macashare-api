@@ -1,4 +1,4 @@
-package org.bdados.sapi.empenhos;
+package org.bdados.sapi.empenho;
 
 import lombok.Data;
 import org.apache.solr.client.solrj.beans.Field;
@@ -8,7 +8,6 @@ import org.springframework.data.solr.core.mapping.Indexed;
 import org.springframework.data.solr.core.mapping.SolrDocument;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Data

@@ -1,4 +1,4 @@
-package org.bdados.sapi.empenhos;
+package org.bdados.sapi.empenho;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
