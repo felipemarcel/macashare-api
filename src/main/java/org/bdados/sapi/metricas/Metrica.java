@@ -1,11 +1,13 @@
 package org.bdados.sapi.metricas;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
 //@Document(collection = "portais_scre")
+@Data
 public class Metrica {
 
     private String municipioID;
@@ -20,6 +22,7 @@ public class Metrica {
     private Integer classificacaoOrcamentaria;
     private Integer identificacaoCredor;
 
+    @JsonCreator
     public Metrica(String municipioID, Integer notaGestor, String municipio, Integer dataDespesa, Integer numeroPagamentoEmpenho, Integer classificacaoOrcamentaria, Integer identificacaoCredor) {
         this.municipioID = municipioID;
         this.notaGestor = notaGestor;
