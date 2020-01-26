@@ -2,9 +2,10 @@ package org.bdados.sapi.empenho;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.constraints.NotEmpty;
+import java.time.LocalDateTime;
 
 import static org.springframework.http.ResponseEntity.ok;
 
@@ -13,11 +14,23 @@ import static org.springframework.http.ResponseEntity.ok;
 public class EmpenhoController {
 
     @Autowired
-    private EmpenhoRepository repository;
+    private EmpenhoService service;
 
     @GetMapping
-    private ResponseEntity<?> find() {
-        return ok(repository.findAll());
+    //ct -> cidade
+    //sd -> start date
+    //ed -> end date
+    //q -> search term
+    private ResponseEntity<?> findBy(@RequestParam(value = "ct", required = false) @NotEmpty String cidade,
+                                     @RequestParam(value = "sd", required = false) String dataInicio,
+                                     @RequestParam(value = "ed", required = false) String dataFim,
+                                     @RequestParam(value = "q", required = false) String termoDeBusca) {
+        return ok(service.findBy(cidade, dataInicio, dataFim, termoDeBusca));
+    }
+
+    @GetMapping("/{id}")
+    private ResponseEntity<?> findBy(@PathVariable String id) {
+        return ok(service.findBy(id));
     }
 
 }
