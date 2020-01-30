@@ -1,14 +1,13 @@
 package org.bdados.sapi.empenho;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.solr.core.SolrTemplate;
 import org.springframework.data.solr.core.query.*;
-import org.springframework.data.solr.core.query.result.ScoredPage;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 
 @Service
@@ -21,7 +20,7 @@ public class EmpenhoService {
     @Autowired
     private SolrTemplate solrTemplate;
 
-    public List<NotasEmpenho> findBy(String cidade, String dataInicio, String dataFim, String termoDeBusca) {
+    public Page<NotasEmpenho> findBy(String cidade, String dataInicio, String dataFim, String termoDeBusca) {
 
         Query query = new SimpleQuery(Criteria.WILDCARD);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -44,8 +43,7 @@ public class EmpenhoService {
             query.addCriteria(new Criteria("data_emissao._date").greaterThanEqual(LocalDate.parse(dataInicio, formatter).atStartOfDay().format(DateTimeFormatter.ISO_DATE_TIME) + "Z"));
         }
 
-//        return solrTemplate.queryForPage("portais_ne", query, NotasEmpenho.class);
-        return repository.findBy(termoDeBusca);
+        return solrTemplate.queryForPage("portais_ne", query, NotasEmpenho.class);
     }
 
     public NotasEmpenho findBy(String id) {
