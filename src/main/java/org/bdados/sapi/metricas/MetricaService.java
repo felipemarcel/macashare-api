@@ -11,4 +11,8 @@ public class MetricaService {
     @Autowired
     private MetricaRepository repository;
 
+    public List<Metrica> findAllBy(String codMunicipio) {
+        return repository.findAllByCodMunicipio(codMunicipio);
+    }
+
 }

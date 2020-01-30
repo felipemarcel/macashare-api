@@ -18,15 +18,19 @@ public class Municipio {
     @Field(value = "nome_municipio")
     private String nome;
 
-    private String geoibgeId;
+    @Field(value = "geoibgeId")
+    private String geoIbgeId;
+
+    @Field(value = "tce_id")
+    private String tceID;
 
     public Municipio() {
     }
 
-    public Municipio(String _id, String codigoMunicipio, String nome, String geoibgeId) {
+    public Municipio(String _id, String codigoMunicipio, String nome, String geoIbgeId) {
         this._id = _id;
         this.codigoMunicipio = codigoMunicipio;
         this.nome = nome;
-        this.geoibgeId = geoibgeId;
+        this.geoIbgeId = geoIbgeId;
     }
 }

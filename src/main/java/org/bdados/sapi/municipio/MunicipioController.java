@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import static org.springframework.http.ResponseEntity.ok;
 
 @RestController
-@RequestMapping("/municipios")
+@RequestMapping("/tce-municipios")
 public class MunicipioController {
 
     @Autowired

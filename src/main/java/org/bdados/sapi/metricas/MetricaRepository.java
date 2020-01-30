@@ -8,4 +8,6 @@ import java.util.List;
 @Repository
 public interface MetricaRepository extends MongoRepository<Metrica, String> {
 
+    List<Metrica> findAllByCodMunicipio(String codMunicipio);
+
 }
